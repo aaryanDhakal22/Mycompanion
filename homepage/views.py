@@ -17,39 +17,36 @@ def process(request, text):
     else:
         return "I didnt understand"
 
+# not using 
+# # TODO: add more (complex) emotions to allow for better interactions
+# # TODO: feed the currentEmotion inputs into a NN that predicts emotional state
+# # a var that measures the child's current emotional state
+# # giving the Avatar an idea of how to respond
+# # on a scale of zero to one how [happy, sad] the child is
+# currentEmotion = [0, 0]
 
-def moodpage(requests, md):
-    print(md)
-    return render(requests, "home.html")
+
+def moodpage(requests, mood):
+    print(mood)
+    context = {"text": mood, "first_btn": "lol"}
+    return render(requests, "home.html", context)
 
 
-# TODO: add more (complex) emotions to allow for better interactions
-# TODO: feed the currentEmotion inputs into a NN that predicts emotional state
-# a var that measures the child's current emotional state
-# giving the Avatar an idea of how to respond
-# on a scale of zero to one how [happy, sad] the child is
-currentEmotion = [0, 0]
-
-## input => outputs
-
-# find keywords that indicate emotion, update currentEmotion
-def markEmotion(request, text):
-
-    word_list = text.split(" ")
-    emotionSum = currentEmotion[0] + currentEmotion[1]
-
-    if "happy" in word_list:
-        currentEmotion[0] = (1 + (currentEmotion[0])) / (emotionSum + 1)
-
-    if "sad" in word_list:
-        currentEmotion[1] = (1 + (currentEmotion[1])) / (emotionSum + 1)
+# # find keywords that indicate emotion, update currentEmotion
+# def markEmotion(request, text):
+#     word_list = text.split(" ")
+#     emotionSum = currentEmotion[0] + currentEmotion[1]
+#     if "happy" in word_list:
+#         currentEmotion[0] = (1 + (currentEmotion[0])) / (emotionSum + 1)
+#     if "sad" in word_list:
+#         currentEmotion[1] = (1 + (currentEmotion[1])) / (emotionSum + 1)
 
 
 def homepage(request):
-    context = {}
-
-    if request.method == "POST":
-        text = request.POST["inp"]
-        context.setdefault("text", process(request, text))
+    context = {"first_btn": "I'm sad"}
+    
+    # if request.method == "POST":
+    #     text = request.POST["inp"]
+    #     context.setdefault("text", process(request, text))
 
     return render(request, "home.html", context)
