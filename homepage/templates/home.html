@@ -3,38 +3,36 @@
 {% load static %}
 <div class="container">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-4"></div>
+    <div class="col-4">
       <div class="row gx-5">
         <div class="col-12">
           <img
             class="img-fluid rounded"
-            src="{% static 'homepage/images/homepagecat.jpg' %}"
+            src="{% static 'homepage/images/avatar.png' %}"
             alt="not succeeded"
           />
         </div>
         <div class="col-12">
-          <div class="h3 text-center">{{ text }}</div>
+          <div class="h3 text-center">Hello there {{ text }}</div>
         </div>
         <div class="col-12">
-          <form method="POST" action="/">
-            {% csrf_token %}
-            <div class="form-group">
-              <input
-                autocomplete="off"
-                autofocus
-                type="text"
-                class="form-control"
-                placeholder="Enter text here"
-                name="inp"
-              />
+          <div class="row g-5">
+            <div class="col">
+              <a href="/mood/sad" class = "btn btn-outline-primary">I'm sad</a>
+              </button>
             </div>
-            {% csrf_token %}
-          </form>
+            <div class="col">
+              <div class="btn btn-outline-primary btn-block">I'm sad</div>
+            </div>
+            <div class="col">
+              <div class="btn btn-outline-primary btn-block">I'm sad</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       {% if user.is_authenticated %} Hi {{ user.username }}!
       <p><a href="{% url 'logout' %}">Log Out</a></p>
       {% else %}
