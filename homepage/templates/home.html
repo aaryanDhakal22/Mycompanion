@@ -3,23 +3,24 @@
 {% load static %}
 <div class="container">
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-8">
       <div class="row gx-5">
-        <div class="col-12">
+        <div class="col-6">
           <img
             class="img-fluid rounded"
+            style="margin-left: 50%;"
             src="{% static 'homepage/images/avatar.png' %}"
             alt="not succeeded"
           />
         </div>
         <div class="col-12">
-          <div class="h3 text-center">Hello there {{ text }}</div>
+          <div class="h5 text-center">{{ text }}</div>
         </div>
         <div class="col-12">
           <div class="row g-5">
             <div class="col">
-              <a href="/mood/sad" class = "btn btn-outline-primary">{{ first_btn }}</a>
+              <button>
+                <a href="/mood/sad" value="sad" class="btn btn-outline-primary">{{ first_btn }}</a>
               </button>
             </div>
             <div class="col">

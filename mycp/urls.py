@@ -22,5 +22,5 @@ urlpatterns = [
     path("", views.homepage, name="homepage"),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("mood/<str:md>", views.moodpage),
+    path("mood/<str:mood>", views.moodpage),
 ]
