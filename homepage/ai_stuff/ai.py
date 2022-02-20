@@ -79,9 +79,9 @@ def sentiment_provider_with_ai(file_path):
     pprint(polling_response)
 
     s = sentiment_eval(polling_response.json())
-    print(s)
-    return s
-    
     new_time = datetime.now()
     elapsed = new_time - prev_time
     print(elapsed.seconds, ":", round(elapsed.microseconds, 2))
+    print(s)
+    return s
+    
