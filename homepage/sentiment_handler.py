@@ -10,8 +10,8 @@ def handler(major_sentiment):
     ]
 
     if major_sentiment.lower() == "positive":
-        return random.choice([positive_response_list])
+        return random.choice(positive_response_list)
     if major_sentiment.lower() == "negative":
-        return random.choice([negative_response_list])
+        return random.choice(negative_response_list)
     if major_sentiment.lower() == "neutral":
-        return random.choice([neutral_response_list])
+        return random.choice(neutral_response_list)

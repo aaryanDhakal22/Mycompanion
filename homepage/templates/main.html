@@ -1,5 +1,6 @@
 {% extends 'home.html' %} {% block options %}
 <div class="text-center display-4">Hi, {{name}}</div>
+<div class="text-center display-4">{{ final_text_for_demo }}</div>
 
 <div class="text-center mx-5">
   <form action="/understand/mood" method="POST">

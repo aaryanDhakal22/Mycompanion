@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+from matplotlib.style import context
 
-from homepage.ai_stuff.ai import sentiment_provider
+from homepage.ai_stuff.ai import demo_sentiment_provider
 from .chapters import *
 from playsound import playsound
 from .ai_stuff import *
@@ -31,9 +32,12 @@ def start_demo(request):
     path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.mp3"
 
     # playsound(path_to_audio)
-    sentiment = sentiment_provider(path_to_audio)
+    sentiment = demo_sentiment_provider(path_to_audio)
     print(sentiment)
-    return render(request, "main.html")
+    final_text_for_demo = handler(sentiment)
+    return render(
+        request, "main.html", context={"final_text_for_demo": final_text_for_demo}
+    )
 
 
 def homepage(request):

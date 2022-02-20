@@ -17,8 +17,8 @@ transcript_endpoint = "https://api.assemblyai.com/v2/transcript"
 upload_endpoint = "https://api.assemblyai.com/v2/upload"
 
 
-def demo_sentimen_provider(file_path):
-    return choice("positive", "negative", "neutral")
+def demo_sentiment_provider(file_path):
+    return choice(["positive", "negative", "neutral"])
 
 
 # Unused due to high time for taken by the assemblyAI API to return results
