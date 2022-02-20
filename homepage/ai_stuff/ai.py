@@ -16,6 +16,21 @@ upload_endpoint = "https://api.assemblyai.com/v2/upload"
 def demo_sentiment_provider(file_path):
     return choice(["positive", "negative", "neutral"])
 
+def sentiment_eval(response_json):
+    value_sentiment = 0
+    for phrase in response_json['sentiment_analysis_results']:
+        curr_sentiment = phrase['sentiment'] 
+        if curr_sentiment == 'POSITIVE':
+            value_sentiment += 1
+        elif curr_sentiment == 'POSITIVE':
+            value_sentiment -= 1
+
+    if value_sentiment > 0:
+        return 'positive'
+    elif value_sentiment < 0:
+        return 'negative'
+    else:
+        return 'neutral'
 
 def sentiment_eval(response_json):
     value_sentiment = 0
@@ -86,3 +101,4 @@ def sentiment_provider_with_ai(file_path):
     print(elapsed.seconds, ":", round(elapsed.microseconds, 2))
     print(s)
     return s
+    
