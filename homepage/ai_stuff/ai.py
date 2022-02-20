@@ -1,13 +1,9 @@
 import sys
-from datetime import datetime
-from random import choice
-
-# from xxlimited import new/
-
-# from configure import auth_key
 import requests
 import pprint
 from time import sleep
+from datetime import datetime
+from random import choice
 
 # store globals
 auth_key = "47b32e758a344b379770d421e20c95b6"
@@ -20,6 +16,21 @@ upload_endpoint = "https://api.assemblyai.com/v2/upload"
 def demo_sentiment_provider(file_path):
     return choice(["positive", "negative", "neutral"])
 
+def sentiment_eval(response_json):
+    value_sentiment = 0
+    for phrase in response_json['sentiment_analysis_results']:
+        curr_sentiment = phrase['sentiment'] 
+        if curr_sentiment == 'POSITIVE':
+            value_sentiment += 1
+        elif curr_sentiment == 'POSITIVE':
+            value_sentiment -= 1
+
+    if value_sentiment > 0:
+        return 'positive'
+    elif value_sentiment < 0:
+        return 'negative'
+    else:
+        return 'neutral'
 
 # Unused due to high time for taken by the assemblyAI API to return results
 # OPTIONAL
@@ -66,6 +77,11 @@ def sentiment_provider_with_ai(file_path):
         )
         print("File is", polling_response.json()["status"])
     pprint(polling_response)
+
+    s = sentiment_eval(polling_response.json())
+    print(s)
+    return s
+    
     new_time = datetime.now()
     elapsed = new_time - prev_time
     print(elapsed.seconds, ":", round(elapsed.microseconds, 2))
