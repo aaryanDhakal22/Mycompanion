@@ -21,6 +21,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.homepage, name="homepage"),
     path("accounts/", include("accounts.urls")),
+    path("name/start", views.startmain),
     path("accounts/", include("django.contrib.auth.urls")),
     path("mood/<str:mood>", views.moodpage),
+    path("understand/mood", views.start_demo),
 ]

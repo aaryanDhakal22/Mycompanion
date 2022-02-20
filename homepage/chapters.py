@@ -25,6 +25,7 @@ class Startup:
             "is_button": self.is_button[index],
             "button_count": self.button_count[index],
             "button_text": self.button_text[index],
+            "name": self.name,
         }
 
 

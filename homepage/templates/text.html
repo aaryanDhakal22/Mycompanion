@@ -1,6 +1,6 @@
 {% extends 'home.html' %} {% block options %}
 
-<form action="/" method="POST">
+<form action="/name/start" method="POST">
   {% csrf_token %}
   <input type="text" class="form-control" name="text_input" />
 </form>
