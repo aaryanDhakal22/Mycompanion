@@ -17,20 +17,20 @@ Django==4.0.2
 filelock==3.4.2
 Flask==2.0.2
 fonttools==4.29.1
-google-api-core==2.5.0
-google-api-python-client==2.37.0
-google-auth==2.6.0
-google-auth-httplib2==0.1.0
-google-auth-oauthlib==0.4.6
-googleapis-common-protos==1.54.0
+# google-api-core==2.5.0
+# google-api-python-client==2.37.0
+# google-auth==2.6.0
+# google-auth-httplib2==0.1.0
+# google-auth-oauthlib==0.4.6
+# googleapis-common-protos==1.54.0
 gunicorn==20.1.0
 h11==0.13.0
 httplib2==0.20.4
 idna==3.3
 itsdangerous==2.0.1
-Jinja2==3.0.3
-joblib==1.1.0
-kiwisolver==1.3.2
+# Jinja2==3.0.3
+# joblib==1.1.0
+# kiwisolver==1.3.2
 leaguepedia-parser==2.0.0
 lol-dto==2.0.0
 lol-id-tools==1.7.1
@@ -40,11 +40,11 @@ MouseInfo==0.1.3
 mwcleric==0.8.2
 mwclient==0.10.1
 mwparserfromhell==0.6.3
-mwrogue==0.1.1
+# mwrogue==0.1.1
 mypy-extensions==0.4.3
-nltk==3.7
-numpy==1.22.2
-oauthlib==3.2.0
+# nltk==3.7
+# numpy==1.22.2
+# oauthlib==3.2.0
 outcome==1.1.0
 packaging==21.3
 pathspec==0.9.0
