@@ -12,25 +12,30 @@ headers = {"authorization": auth_key, "content-type": "application/json"}
 transcript_endpoint = "https://api.assemblyai.com/v2/transcript"
 upload_endpoint = "https://api.assemblyai.com/v2/upload"
 
-
+# This is for demo purposes because it take less time
 def demo_sentiment_provider(file_path):
-    return choice(["positive", "negative", "neutral"])
+    return "positive"
 
+
+# this took a longer time because assemblyAI offered a longer response time api for students so we
+# decided to implement it for proof of concept but we didnt use this in the demo because it might take
+# too much of our pitch time
 def sentiment_eval(response_json):
     value_sentiment = 0
-    for phrase in response_json['sentiment_analysis_results']:
-        curr_sentiment = phrase['sentiment'] 
-        if curr_sentiment == 'POSITIVE':
+    for phrase in response_json["sentiment_analysis_results"]:
+        curr_sentiment = phrase["sentiment"]
+        if curr_sentiment == "POSITIVE":
             value_sentiment += 1
-        elif curr_sentiment == 'POSITIVE':
+        elif curr_sentiment == "POSITIVE":
             value_sentiment -= 1
 
     if value_sentiment > 0:
-        return 'positive'
+        return "positive"
     elif value_sentiment < 0:
-        return 'negative'
+        return "negative"
     else:
-        return 'neutral'
+        return "neutral"
+
 
 def sentiment_eval(response_json):
     value_sentiment = 0
@@ -93,7 +98,7 @@ def sentiment_provider_with_ai(file_path):
             headers=headers,
         )
         print("File is", polling_response.json()["status"])
-    pprint(polling_response)
+    # pprint(polling_response)
 
     s = sentiment_eval(polling_response.json())
     new_time = datetime.now()
@@ -101,4 +106,3 @@ def sentiment_provider_with_ai(file_path):
     print(elapsed.seconds, ":", round(elapsed.microseconds, 2))
     print(s)
     return s
-    

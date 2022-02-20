@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from homepage.models import MinorUser, DiaryEntry
-from homepage.ai_stuff.ai import demo_sentiment_provider
+from homepage.ai_stuff.ai import demo_sentiment_provider, sentiment_provider_with_ai
 from .sentiment_handler import handler
 from playsound import playsound
 
@@ -35,9 +35,9 @@ def start(request):
 
 
 def analyze(request):
-    path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.mp3"
+    path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.wav"
     playsound(path_to_audio)
-    # sentiment = sentiment_provider_with_ai(path_to_audio) # full version
+    # sentiment = sentiment_provider_with_ai(path_to_audio)  # full version
     sentiment = demo_sentiment_provider(path_to_audio)  # without api
     final_text_for_demo = handler(sentiment)
     return render(
