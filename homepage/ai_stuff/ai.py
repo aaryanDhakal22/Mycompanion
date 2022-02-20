@@ -65,6 +65,7 @@ def sentiment_provider_with_ai(file_path):
             headers=headers,
         )
         print("File is", polling_response.json()["status"])
+    pprint(polling_response)
     new_time = datetime.now()
     elapsed = new_time - prev_time
     print(elapsed.seconds, ":", round(elapsed.microseconds, 2))

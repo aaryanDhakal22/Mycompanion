@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from matplotlib.style import context
 
 from homepage.ai_stuff.ai import demo_sentiment_provider
 from .chapters import *
@@ -50,6 +49,8 @@ def homepage(request):
         if context["is_button"] == True:
             if context["button_count"] == 1:
                 return render(request, "button.html", context)
+            if context["button_count"] == 3:
+                return render(request, "buttons3.html", context)
             else:
                 return render(request, "choices.html", context)
         else:
