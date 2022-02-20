@@ -49,10 +49,8 @@ def homepage(request):
         if context["is_button"] == True:
             if context["button_count"] == 1:
                 return render(request, "button.html", context)
-
-            # if context["button_count"] == 3:
-            #     return render(request, "button_three.html", context)
-             
+            if context["button_count"] == 3:
+                return render(request, "buttons3.html", context)
             else:
                 return render(request, "choices.html", context)
         else:
