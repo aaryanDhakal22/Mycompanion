@@ -18,11 +18,24 @@ from django.urls import include, path
 from homepage import views
 
 urlpatterns = [
+    path("", views.startpage, name="startpage"),
+    path("<int:id>/", views.frames, name="frames"),
+    path("name", views.names, name="name"),
+    path("diary", views.diary, name="diary"),
+    path("main/", views.start, name="start"),
     path("admin/", admin.site.urls),
-    path("", views.homepage, name="homepage"),
-    path("accounts/", include("accounts.urls")),
-    path("name/start", views.startmain),
-    path("accounts/", include("django.contrib.auth.urls")),
-    path("mood/<str:mood>", views.moodpage),
-    path("understand/mood", views.start_demo),
+    path("analyze/", views.analyze, name="analyze"),
+    # path("accounts/", include("accounts.urls")),
+    # path("accounts/", include("django.contrib.auth.urls")),
+    # path("name/start", views.startmain),
+    # path("mood/<str:mood>", views.moodpage),
+    # path("understand/mood", views.start_demo),
 ]
+# urlpatterns = [
+#     path("", views.homepage, name="homepage"),
+#     path("accounts/", include("accounts.urls")),
+#     path("accounts/", include("django.contrib.auth.urls")),
+#     path("name/start", views.startmain),
+#     path("mood/<str:mood>", views.moodpage),
+#     path("understand/mood", views.start_demo),
+# ]

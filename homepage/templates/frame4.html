@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block body %} {% load static %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <img
+        class="img-fluid rounded-circle"
+        src="{% static 'homepage/images/bg-waving_Palla_2.gif' %}"
+        alt="not succeeded"
+      />
+      <div class="row gx-5">
+        <div class="col-12">
+          <div class="h3 text-center">
+            <b> How was your day today?</b>
+          </div>
+        </div>
+        <form action="/diary" method="POST">
+          {% csrf_token %}
+          <div class="col-12">
+            <div class="row my-5">
+              <div class="col-12 text-center h4">Happiness</div>
+              <div class="col-12">
+                <div class="slidecontainer">
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="50"
+                    class="slider"
+                    name="happy"
+                  />
+                </div>
+              </div>
+              <div class="col-12 text-center h4">Stress</div>
+              <div class="col-12">
+                <div class="slidecontainer">
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="50"
+                    class="slider"
+                    name="stress"
+                  />
+                </div>
+              </div>
+              <div class="col-12 text-center h4">Energy</div>
+              <div class="col-12">
+                <div class="slidecontainer">
+                  <input
+                    type="range"
+                    min="1"
+                    max="100"
+                    value="50"
+                    class="slider"
+                    name="energy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container text-center">
+            <input type="submit" value="Okay" class="btn btn-info p-3" />
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <!-- 
+    <div class="col-3"></div> -->
+</div>
+{% endblock body %}

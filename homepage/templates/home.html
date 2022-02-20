@@ -3,34 +3,28 @@
 {% load static %}
 <div class="container">
   <div class="row justify-content-center">
-    {% comment %} <div class="col-3"></div> {% endcomment %}
-        <div class="col-12 center" style="margin: 20px">
-          <img
-            class="mx-auto d-block"
-            style="max-width: 30%"
-            src="{% static 'homepage/images/waving_1_palla_1.gif' %}"
-            alt="not succeeded"
-          />
-        </div>
-        <div class="col-12">
-          <div class="h3 text-center">{{ title }}</div>
-          <div class="h5 text-center">{{ subtitle }}</div>
-        </div>
-        <div class="col-12">
-          {% block options %}{% endblock options %}
+    {% comment %}
+    <div class="col-3"></div>
+    {% endcomment %}
+    <div class="col-12">
+      <img
+        class="mx-auto d-block"
+        src="{% static 'homepage/images/waving_1_palla_1.gif' %}"
+        alt="not succeeded"
+      />
+    </div>
+    <div class="col-12">
+      <div class="h3 text-center">{{ title }}</div>
+      <div class="h5 text-center">{{ subtitle }}</div>
+    </div>
+    <div class="col-12">
+      {% block options %}{% endblock options %}
 
-          <!-- <button>
+      <!-- <button>
               <a href="/mood/sad" value="sad" class="btn btn-outline-primary">{{ first_btn }}</a>
             </button> -->
-        </div>
-    <div class="col-3">
-      <!-- {% if user.is_authenticated %} Hi {{ user.username }}!
-      <p><a href="{% url 'logout' %}">Log Out</a></p>
-      {% else %}
-      <p>You are not logged in</p>
-      <a href="{% url 'login' %}">Log In</a>
-      {% endif %} -->
     </div>
+    <div class="col-3"></div>
   </div>
 </div>
 {% endblock body %}

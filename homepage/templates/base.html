@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    {% load static %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -12,11 +12,11 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{% static 'homepage/css/custom.css' %}" />
     {% load static %}
     <title>Hello, world!</title>
   </head>
-  <body
-  style="background-color: #D6F7AD">
+  <body>
     <!-- BODY CONTENT -->
 
     {% block body %}{% endblock body %}

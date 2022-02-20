@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block body %} {% load static %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <img
+        class="img-fluid rounded-circle"
+        src="{% static 'homepage/images/bg-waving_Palla_2.gif' %}"
+        alt="not succeeded"
+      />
+      <div class="row gx-5">
+        <div class="col-12">
+          <div class="h5 text-center">
+            <b> <br />Is there anything nice that happened today?</b>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="container my-5">
+            <form action="/name/start" method="POST">
+              {% csrf_token %}
+              <textarea
+                class="form-control mx-auto border border-info font-adjust"
+                rows="7"
+              ></textarea>
+            </form>
+          </div>
+        </div>
+        <div class="container text-center">
+          <a href="main" class="btn btn-info">Okay</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <!-- 
+    <div class="col-3"></div> -->
+</div>
+{% endblock body %}

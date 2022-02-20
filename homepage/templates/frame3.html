@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block body %} {% load static %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <img
+        class="img-fluid rounded-circle"
+        src="{% static 'homepage/images/bg-waving_Palla_2.gif' %}"
+        alt="not succeeded"
+      />
+      <div class="row gx-5">
+        <div class="col-12">
+          <div class="h6 text-center">
+            <b>
+              <br />To make sure no one can access you account and to recover to
+              our converstation, we need an account!</b
+            >
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="h6 text-center">
+            <br />
+            Create a unique Username <br />
+          </div>
+        </div>
+        <div class="container my-5">
+          <form action="/name" method="POST">
+            {% csrf_token %}
+            <input
+              autofocus
+              autocomplete="off"
+              type="text"
+              class="form-control form-control-lg mx-auto border border-info"
+              name="user_name"
+              style="max-width: 50%"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <!-- 
+    <div class="col-3"></div> -->
+</div>
+{% endblock body %}

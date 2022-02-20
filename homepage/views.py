@@ -1,67 +1,45 @@
 from django.shortcuts import render, redirect
-
+from homepage.models import MinorUser, DiaryEntry
 from homepage.ai_stuff.ai import demo_sentiment_provider
-from .chapters import *
-from playsound import playsound
-from .ai_stuff import *
 from .sentiment_handler import handler
-import os
-
-from homepage import sentiment_handler
-
-# Creafte your views here.
+from playsound import playsound
 
 
-def moodpage(request, mood):
-    return render(request, "text.html")
+def startpage(request):
+    return render(request, "frame1.html")
 
 
-def process(text):
-    return "test", "choices"
+def frames(request, id):
+    html_curr = "frame" + str(id) + ".html"
+    return render(request, html_curr)
 
 
-def startmain(request):
-    reply_by_user = request.POST["text_input"]
-    starter.name = reply_by_user
-    return render(request, "main.html", context={"name": request.POST["text_input"]})
+def names(request):
+    name = request.POST["user_name"]
+    user_ = MinorUser.objects.create(name=name)
+    return render(request, "frame4.html", {"user": user_})
 
 
-def start_demo(request):
-    print(os.getcwd())
+def diary(request):
+    print(request.method)
+    happy = request.POST["happy"]
+    stress = request.POST["stress"]
+    energy = request.POST["energy"]
+
+    DiaryEntry.objects.create(happiness=happy, stress=stress, energy=energy)
+    return render(request, "frame5.html")
+
+
+def start(request):
+    return render(request, "main.html")
+
+
+def analyze(request):
     path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.mp3"
-
-    # playsound(path_to_audio)
-    sentiment = demo_sentiment_provider(path_to_audio)
-    print(sentiment)
+    playsound(path_to_audio)
+    # sentiment = sentiment_provider_with_ai(path_to_audio) # full version
+    sentiment = demo_sentiment_provider(path_to_audio)  # without api
     final_text_for_demo = handler(sentiment)
     return render(
-        request, "main.html", context={"final_text_for_demo": final_text_for_demo}
+        request, "main2.html", context={"final_text_for_demo": final_text_for_demo}
     )
-
-
-def homepage(request):
-    if request.method == "POST":
-        # print(request.POST.get("test", None))
-        starter.pos += 1
-    context = {}
-    if not (starter.is_done):
-        context = starter.return_info()
-        if context["is_button"] == True:
-            if context["button_count"] == 1:
-                return render(request, "button.html", context)
-            if context["button_count"] == 3:
-                return render(request, "buttons3.html", context)
-            else:
-                return render(request, "choices.html", context)
-        else:
-            return render(request, "text.html", context)
-    # return render(request, "button.html")
-
-    # context = {"first_btn": "I'm sad"}
-
-    # if request.method == "POST":
-    #     text = request.POST["text_input"]
-    #     context.setdefault("text", moodpage(request, text))
-    # context.setdefault("text", "Hello there! \n How are you feeling right now?")
-
-    # return render(request, "text.html", context)
