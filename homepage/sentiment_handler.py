@@ -1,18 +1,15 @@
-import random as rd
+import random 
 
 
 def handler(major_sentiment):
-    pos = "oh thats nice. wow fantastic"
-    neg = ""
-    neut = ""
-    pos = pos.split(".")
-    neg = neg.split(".")
-    neut = neut.split(".")
+    positive_response_list = ["That's very nice", "I'm happy you are feeling good"]
+    negative_response_list= ["I'm sorry to hear that", "Tell me about that"]
+    neutral_response_list= ["Thank you for sharing", "Well I'm happy we have time to talk"]
 
     if major_sentiment.lower() == "positive":
-        return rd.choice([pos])
+        return random.choice([positive_response_list])
     if major_sentiment.lower() == "negative":
-        return rd.choice([neg])
+        return random.choice([negative_response_list])
     if major_sentiment.lower() == "neutral":
-        return rd.choice([neut])
+        return random.choice([neutral_response_list])
     
