@@ -1,52 +1,51 @@
 from django.shortcuts import render, redirect
+from .chapters import *
 
 # Create your views here.
 
 
-def process(request, text):
-    if text == "hi":
-        return "hello"
-    if text == "who are you":
-        return "im the mystical cat of you're dreams"
-    if text == "its not you're its your":
-        return "its not YOUR business. Mind your own."
-    if text == "im sad":
-        return "lol"
-    if text == "what lol":
-        return "hehe"
-    else:
-        return "I didnt understand"
-
-# not using 
-# # TODO: add more (complex) emotions to allow for better interactions
-# # TODO: feed the currentEmotion inputs into a NN that predicts emotional state
-# # a var that measures the child's current emotional state
-# # giving the Avatar an idea of how to respond
-# # on a scale of zero to one how [happy, sad] the child is
-# currentEmotion = [0, 0]
+def moodpage(request, mood):
+    return render(request, "text.html")
 
 
-def moodpage(requests, mood):
-    print(mood)
-    context = {"text": mood, "first_btn": "lol"}
-    return render(requests, "home.html", context)
-
-
-# # find keywords that indicate emotion, update currentEmotion
-# def markEmotion(request, text):
-#     word_list = text.split(" ")
-#     emotionSum = currentEmotion[0] + currentEmotion[1]
-#     if "happy" in word_list:
-#         currentEmotion[0] = (1 + (currentEmotion[0])) / (emotionSum + 1)
-#     if "sad" in word_list:
-#         currentEmotion[1] = (1 + (currentEmotion[1])) / (emotionSum + 1)
+def process(text):
+    return "test", "choices"
 
 
 def homepage(request):
-    context = {"first_btn": "I'm sad"}
-    
-    # if request.method == "POST":
-    #     text = request.POST["inp"]
-    #     context.setdefault("text", process(request, text))
+    if request.method == "POST":
+        # print(request.POST.get("test", None))
+        starter.pos += 1
+    context = {}
+    if not (starter.is_done):
 
-    return render(request, "home.html", context)
+        if request.POST.get("text_input", None) != None:
+            reply_by_user = request.POST["text_input"]
+
+            if starter.name == None:
+                starter.name = reply_by_user
+                starter.is_done = True
+            else:
+                reply, return_type = process(reply_by_user)
+
+                if return_type == "choices":
+                    return render(request, "choices.html")
+        else:
+            context = starter.return_info()
+            if context["is_button"] == True:
+                if context["button_count"] == 1:
+                    return render(request, "button.html", context)
+                else:
+                    return render(request, "choices.html", context)
+            else:
+                return render(request, "text.html", context)
+    # return render(request, "button.html")
+
+    # context = {"first_btn": "I'm sad"}
+
+    # if request.method == "POST":
+    #     text = request.POST["text_input"]
+    #     context.setdefault("text", moodpage(request, text))
+    # context.setdefault("text", "Hello there! \n How are you feeling right now?")
+
+    # return render(request, "text.html", context)

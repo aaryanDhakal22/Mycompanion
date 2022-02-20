@@ -1,0 +1,16 @@
+{% extends 'home.html' %} {% block options %}
+<div class="text-center">
+  <!-- <a href="/" class="btn btn-outline-primary btn-lg"></a> -->
+  <form action="/" method="POST">
+    {% csrf_token %}
+    <input
+      class="btn btn-outline-primary btn-lg"
+      type="submit"
+      value="{{ button_text }}"
+      name="add_object"
+    />
+    {% csrf_token %}
+  </form>
+</div>
+
+{% endblock options %}
