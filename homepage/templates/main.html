@@ -1,0 +1,16 @@
+{% extends 'home.html' %} {% block options %}
+<div class="text-center display-4">Hi, {{name}}</div>
+
+<div class="text-center mx-5">
+  <form action="/understand/mood" method="POST">
+    {% csrf_token %}
+    <input
+      class="btn btn-primary btn-lg rounded-circle"
+      type="submit"
+      value="🎙️"
+      name="add_object"
+    />
+    {% csrf_token %}
+  </form>
+</div>
+{% endblock options %}
