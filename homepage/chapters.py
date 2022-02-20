@@ -1,18 +1,19 @@
 class Startup:
     def __init__(self):
         self.title = [
-            "Hi there! My name is Bo",
-            "Whatever you share with me will always be private",
-            "What should I call you",
+            "Hi there! \n My name is Paca.",
+            "Feel comfotable sharing with me whatever is on your mind",
+            "What is your name?",
         ]
         self.sub_title = [
-            "I can be you listening companion if you would like 😊",
-            "It will never be shared without your consent! So worry not 😁",
-            "Create you unique username",
+            "I'm your listening companion 😊",
+            " ",
+            # "It will never be shared without your consent! So worry not 😁",
+            " ",
         ]
         self.is_button = [True, True, False]
         self.button_count = [1, 1, 0]
-        self.button_text = ["Sure 😊", "Oki😁", ""]
+        self.button_text = ["Talk to Paca 😊", "Ok 😁", ""]
         self.is_done = False
         self.pos = 0
         self.name = None

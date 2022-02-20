@@ -2,14 +2,12 @@
 <!-- <h1>Hello, world!</h1> -->
 {% load static %}
 <div class="container">
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <div class="row gx-5">
-        <div class="col-6">
+  <div class="row justify-content-center">
+    {% comment %} <div class="col-3"></div> {% endcomment %}
+        <div class="col-12 center" style="margin: 20px">
           <img
-            class="img-fluid rounded"
-            style="margin-left: 50%"
+            class="mx-auto d-block"
+            style="max-width: 30%"
             src="{% static 'homepage/images/waving_1_palla_1.gif' %}"
             alt="not succeeded"
           />
@@ -25,8 +23,6 @@
               <a href="/mood/sad" value="sad" class="btn btn-outline-primary">{{ first_btn }}</a>
             </button> -->
         </div>
-      </div>
-    </div>
     <div class="col-3">
       <!-- {% if user.is_authenticated %} Hi {{ user.username }}!
       <p><a href="{% url 'logout' %}">Log Out</a></p>
