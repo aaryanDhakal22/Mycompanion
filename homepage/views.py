@@ -28,7 +28,7 @@ def startmain(request):
 
 def start_demo(request):
     print(os.getcwd())
-    path_to_audio = "homepage/audio/short_audio.mp3"
+    path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.mp3"
 
     # playsound(path_to_audio)
     sentiment = sentiment_provider(path_to_audio)

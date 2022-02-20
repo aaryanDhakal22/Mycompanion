@@ -1,4 +1,8 @@
 import sys
+from datetime import datetime
+from random import choice
+
+# from xxlimited import new/
 
 # from configure import auth_key
 import requests
@@ -13,7 +17,13 @@ transcript_endpoint = "https://api.assemblyai.com/v2/transcript"
 upload_endpoint = "https://api.assemblyai.com/v2/upload"
 
 
-def sentiment_provider(file_path):
+def demo_sentimen_provider(file_path):
+    return choice("positive", "negative", "neutral")
+
+
+# Unused due to high time for taken by the assemblyAI API to return results
+# OPTIONAL
+def sentiment_provider_with_ai(file_path):
     # reads audio file
     def read_file(filename):
         with open(filename, "rb") as _file:
@@ -40,21 +50,21 @@ def sentiment_provider(file_path):
     print("Transcription Requested")
     pprint.pprint(transcript_request)
     pprint.pprint(transcript_response.json())
-
+    prev_time = datetime.now()
     # set up polling
     polling_response = requests.get(
         transcript_endpoint + "/" + transcript_response.json()["id"], headers=headers
     )
-    filename = transcript_response.json()["id"] + ".txt"
+    # filename = transcript_response.json()["id"] + ".txt"
 
     # if our status isn’t complete, sleep and then poll again
     while polling_response.json()["status"] != "completed":
-        sleep(10)
+        sleep(1)
         polling_response = requests.get(
             transcript_endpoint + "/" + transcript_response.json()["id"],
             headers=headers,
         )
         print("File is", polling_response.json()["status"])
-
-    # endpoint = transcript_endpoint + '/' +
-    return "positive"
+    new_time = datetime.now()
+    elapsed = new_time - prev_time
+    print(elapsed.seconds, ":", round(elapsed.microseconds, 2))

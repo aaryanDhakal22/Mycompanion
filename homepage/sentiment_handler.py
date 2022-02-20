@@ -2,7 +2,7 @@ import random as rd
 
 
 def handler(major_sentiment):
-    pos = "oh thats nice. wow fantastic"
+    pos = "oh thats nice . wow fantastic"
     neg = ""
     neut = ""
     pos = pos.split(".")
