@@ -36,7 +36,7 @@ def start(request):
 
 def analyze(request):
     path_to_audio = "D:/Projects/Mycompanion/mycp/homepage/audio/short_audio.wav"
-    playsound(path_to_audio)
+    # playsound(path_to_audio)
     # sentiment = sentiment_provider_with_ai(path_to_audio)  # full version
     sentiment = demo_sentiment_provider(path_to_audio)  # without api
     final_text_for_demo = handler(sentiment)
